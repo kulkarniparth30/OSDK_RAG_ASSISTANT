@@ -4,6 +4,9 @@ import QuizView from './QuizView';
 import StudyPlanView from './StudyPlanView';
 import AnalysisView from './AnalysisView';
 
+// In production, point to your Render backend URL
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || '';
+
 const TABS = [
   { key: 'quiz',     icon: '🧠', label: 'Quiz' },
   { key: 'plan',     icon: '📅', label: 'Study Plan' },
@@ -37,7 +40,7 @@ const CrewAIPanel = ({ docsLoaded }) => {
 
   // Health check
   useEffect(() => {
-    fetch('/health')
+    fetch(`${BACKEND_URL}/health`)
       .then((r) => r.ok ? setBackendUp(true) : setBackendUp(false))
       .catch(() => setBackendUp(false));
   }, []);
@@ -55,7 +58,7 @@ const CrewAIPanel = ({ docsLoaded }) => {
     setQuizQuestions(null);
     try {
       const context = await getContext();
-      const res = await fetch('/api/quiz/generate', {
+      const res = await fetch(`${BACKEND_URL}/api/quiz/generate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -84,7 +87,7 @@ const CrewAIPanel = ({ docsLoaded }) => {
     setPlan(null);
     try {
       const context = await getContext();
-      const res = await fetch('/api/study-plan/generate', {
+      const res = await fetch(`${BACKEND_URL}/api/study-plan/generate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -113,7 +116,7 @@ const CrewAIPanel = ({ docsLoaded }) => {
     setAnalysis(null);
     try {
       const context = await getContext();
-      const res = await fetch('/api/analyze', {
+      const res = await fetch(`${BACKEND_URL}/api/analyze`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ context }),
