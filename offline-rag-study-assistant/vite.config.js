@@ -1,29 +1,9 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
   plugins: [
     react(),
-    VitePWA({
-      registerType: 'autoUpdate',
-      workbox: {
-        maximumFileSizeToCacheInBytes: 10 * 1024 * 1024, // 10 MB
-      },
-      manifest: {
-        name: 'StudyMind AI',
-        short_name: 'StudyMind',
-        description: 'Offline RAG Study Assistant',
-        theme_color: '#ffffff',
-        icons: [
-          {
-            src: '/vite.svg',
-            sizes: '192x192',
-            type: 'image/svg+xml'
-          }
-        ]
-      }
-    })
   ],
   server: {
     port: 5173,
