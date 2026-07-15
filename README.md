@@ -276,6 +276,8 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-<p align="center">
-  <strong>Made with 💜 by <a href="https://github.com/kulkarniparth30">Parth Kulkarni</a></strong>
-</p>
+## 👥 Team
+
+- **Parth Kulkarni** — [GitHub](https://github.com/kulkarniparth30)
+- **Anjali Kharade**
+- **Jijau Garje**
